@@ -45,7 +45,7 @@ class App extends Component {
             this.state.isOpen && 
             <Header banner={this.state.banner}/>
           }
-        
+          <input></input>
           <button onClick={this.buttonHandler} >Click Me</button>
         </header>
       </div>
