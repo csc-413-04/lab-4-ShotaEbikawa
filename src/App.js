@@ -3,42 +3,44 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { doTest } from './redux/actions';
+import Header from './Header';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       color: 'black',
-      banner: 'hello',
+      banner: 'Shota is my name',
       isOpen: false,
     };
     this.buttonHandler = this.buttonHandler.bind(this);
-
   }
+
   buttonHandler() {
     this.setState({
-      isOpen : !this.state.isOpen,
+      isOpen: !this.state.isOpen,
     });
-
   }
-  
 
   render() {
+    let myVariable = <h2>Shota</h2>;
+    let myBanner;
+    if (this.state.isOpen) {
+      myBanner = <h1>{this.state.banner}</h1>
+    }
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            <code>Shota Ebikawa</code>
+            {myVariable}
           </p>
-          <input></input>
-          <p onclick="this.HTML='You clicked it!!!'"></p>
-          <button>Click Me</button>
+          {myBanner}
+          <button onClick={this.buttonHandler} >Click Me</button>
         </header>
       </div>
     );
   }
-
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -53,4 +55,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(App);
-
