@@ -5,19 +5,40 @@ import { connect } from 'react-redux';
 import { doTest } from './redux/actions';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: 'black',
+      banner: 'hello',
+      isOpen: false,
+    };
+    this.buttonHandler = this.buttonHandler.bind(this);
+
+  }
+  buttonHandler() {
+    this.setState({
+      isOpen : !this.state.isOpen,
+    });
+
+  }
+  
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            <code>Shota Ebikawa</code>
           </p>
-          <h2>413 Starter Kit </h2>
+          <input></input>
+          <p onclick="this.HTML='You clicked it!!!'"></p>
+          <button>Click Me</button>
         </header>
       </div>
     );
   }
+
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -32,3 +53,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(App);
+
