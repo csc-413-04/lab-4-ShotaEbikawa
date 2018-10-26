@@ -10,7 +10,7 @@ class App extends Component {
     super(props);
     this.state = {
       color: 'black',
-      banner: 'Shota is my name',
+      banner: 'Ebikawa',
       isOpen: false,
     };
     this.buttonHandler = this.buttonHandler.bind(this);
@@ -21,9 +21,14 @@ class App extends Component {
       isOpen: !this.state.isOpen,
     });
   }
+    textHandler(e) {
+    this.setState({
+      banner: e.target.value,
+    })
+  }
 
   render() {
-    let myVariable = <h2>Shota</h2>;
+    let variableName = <h2>Shota</h2>;
     let myBanner;
     if (this.state.isOpen) {
       myBanner = <h1>{this.state.banner}</h1>
@@ -33,9 +38,14 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            {myVariable}
+            {variableName}
           </p>
-          {myBanner}
+          {this.props.test}
+          {
+            this.state.isOpen && 
+            <Header banner={this.state.banner}/>
+          }
+        
           <button onClick={this.buttonHandler} >Click Me</button>
         </header>
       </div>
